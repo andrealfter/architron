@@ -1,7 +1,9 @@
-const express = require("express");
-const fetch = require("node-fetch");
-const fs = require("fs").promises;
-require("dotenv").config();
+import express from "express";
+import fetch from "node-fetch";
+import { promises as fs } from "fs";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -29,7 +31,7 @@ async function fetchHumanitecData() {
   return await response.json();
 }
 
-app.get("/fetch-and-store", async (req, res) => {
+app.get("/get-resources", async (req, res) => {
   try {
     console.log("Received request to fetch and store data");
     const data = await fetchHumanitecData();
